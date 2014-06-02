@@ -1,4 +1,4 @@
-module WeThePeople
+module WeThePeopleUpdate
   class Config
     class MotionHTTPWrapper
       class Response
@@ -15,7 +15,7 @@ module WeThePeople
         response = nil
         error = nil
         data = NSURLConnection.sendSynchronousRequest(request, returningResponse: response, error: error)
-        
+
         NSString.alloc.initWithData(data, encoding: NSUTF8StringEncoding)
       end
 
@@ -58,6 +58,9 @@ module WeThePeople
       end
 
       attr_accessor :api_key
+      attr_accessor :petition_id
+      attr_accessor :offset
+      attr_accessor :limit
 
       def default_params
         params = { :key => @api_key }

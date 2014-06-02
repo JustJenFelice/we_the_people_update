@@ -1,4 +1,4 @@
-module WeThePeople
+module WeThePeopleUpdate
   class AssociationProxy
     def initialize(parent, klass)
       @klass = klass

@@ -1,4 +1,4 @@
-module WeThePeople
+module WeThePeopleUpdate
   module Resources
     class Petition < WeThePeople::Resource
       attribute :id

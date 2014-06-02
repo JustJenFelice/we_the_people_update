@@ -1,6 +1,6 @@
-module WeThePeople
+module WeThePeopleUpdate
   module Resources
-    class Signature < WeThePeople::Resource
+    class Signature < WeThePeopleUpdate::Resource
       belongs_to :petition
 
       attribute :id

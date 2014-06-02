@@ -1,4 +1,4 @@
-module WeThePeople
+module WeThePeopleUpdate
   class Collection
     include Enumerable
     attr_reader :count, :offset, :limit, :current_page, :all
@@ -6,15 +6,15 @@ module WeThePeople
     def initialize(klass, conditions, hash, parent = nil)
       @criteria = conditions
       @parent = parent
-      
+
       if hash['metadata']['resultset']
         @count = hash['metadata']['resultset']['count'].to_i
         @offset = hash['metadata']['resultset']['offset'].to_i
         @limit = hash['metadata']['resultset']['limit'].to_i
       else
-        @count = WeThePeople::Config.default_page_size
+        @count = WeThePeopleUpdate::Config.default_page_size
         @offset = 0
-        @limit = WeThePeople::Config.default_page_size
+        @limit = WeThePeopleUpdate::Config.default_page_size
       end
 
       @klass = klass
@@ -42,7 +42,7 @@ module WeThePeople
     end
 
     def get_all(refresh = false)
-      if refresh 
+      if refresh
         @all = []
         @offset = 0
       end

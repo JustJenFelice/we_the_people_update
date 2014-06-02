@@ -1,6 +1,6 @@
-module WeThePeople
+module WeThePeopleUpdate
   module Resources
-    class User < WeThePeople::Resource
+    class User < WeThePeopleUpdate::Resource
       attribute :created, Time
       has_embedded :location
     end

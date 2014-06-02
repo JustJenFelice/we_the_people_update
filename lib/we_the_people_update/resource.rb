@@ -1,4 +1,4 @@
-module WeThePeople
+module WeThePeopleUpdate
   class Resource
     class <<self
       attr_reader :embedded_attributes, :embedded_array_attributes, :attributes
@@ -10,8 +10,8 @@ module WeThePeople
       def find(id, parent = nil)
         raise "Must be called by parent." if @belongs_to && parent.nil?
 
-        json = WeThePeople::Config.client.get(build_resource_url(id, parent), :params => WeThePeople::Config.default_params).to_s
-        new(WeThePeople::Config.json.parse(json)['results'].first)
+        json = WeThePeopleUpdate::Config.client.get(build_resource_url(id, parent), :params => WeThePeopleUpdate::Config.default_params).to_s
+        new(WeThePeopleUpdate::Config.json.parse(json)['results'].first)
       end
 
       def path(parent = nil)
@@ -25,14 +25,14 @@ module WeThePeople
       end
 
       def build_resource_url(id, parent = nil)
-        "#{WeThePeople::Config.host}/#{path(parent)}/#{id}.json"
+        "#{WeThePeopleUpdate::Config.host}/#{path(parent)}/#{id}.json"
       end
 
       def fetch(parent = nil, criteria = {})
         raise "Must be called by parent." if @belongs_to && parent.nil?
 
-        body = WeThePeople::Config.client.get(build_index_url(parent, criteria), :params => criteria.merge(WeThePeople::Config.default_params)).to_s
-        WeThePeople::Config.json.parse(body)
+        body = WeThePeopleUpdate::Config.client.get(build_index_url(parent, criteria), :params => criteria.merge(WeThePeopleUpdate::Config.default_params)).to_s
+        WeThePeopleUpdate::Config.json.parse(body)
       end
 
       def cursor(parent = nil, criteria = {})
@@ -44,7 +44,7 @@ module WeThePeople
       end
 
       def build_index_url(parent = nil, criteria = {})
-        "#{WeThePeople::Config.host}/#{path(parent)}.json"
+        "#{WeThePeopleUpdate::Config.host}/#{path(parent)}.json"
       end
 
       def belongs_to(klass_name)
@@ -126,7 +126,7 @@ module WeThePeople
         add_attribute_key(name)
 
         define_method name do
-          AssociationProxy.new(self, "WeThePeople::Resources::#{name.classify}".constantize)
+          AssociationProxy.new(self, "WeThePeopleUpdate::Resources::#{name.classify}".constantize)
         end
       end
     end
@@ -138,11 +138,11 @@ module WeThePeople
       attrs.each_pair do |key, value|
         result[key.to_s.gsub(/\s/, '_')] = value
       end
-      
+
       attrs = result.select {|a| self.class.attributes.include?(a)}
 
       self.class.embedded_attributes.each do |embedded_key|
-        attrs[embedded_key] = "WeThePeople::Resources::#{embedded_key.classify}".constantize.new(attrs[embedded_key]) if !attrs[embedded_key].nil? && !attrs[embedded_key].empty?
+        attrs[embedded_key] = "WeThePeopleUpdate::Resources::#{embedded_key.classify}".constantize.new(attrs[embedded_key]) if !attrs[embedded_key].nil? && !attrs[embedded_key].empty?
       end if self.class.embedded_attributes
 
       self.class.embedded_array_attributes.each do |embedded_array_key|
@@ -150,7 +150,7 @@ module WeThePeople
           # NOTE: This is to make RubyMotion happy
           attrs[embedded_array_key] = attrs[embedded_array_key].dup
           attrs[embedded_array_key].map! do |embedded_array_element|
-            "WeThePeople::Resources::#{embedded_array_key.classify}".constantize.new(embedded_array_element)
+            "WeThePeopleUpdate::Resources::#{embedded_array_key.classify}".constantize.new(embedded_array_element)
           end
         end
       end if self.class.embedded_array_attributes

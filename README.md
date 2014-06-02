@@ -43,16 +43,16 @@ You can configure a few options on the `WeThePeopleUpdate` module:
 
 * `api_key` - Your We The People API key (optional).
 * `default_page_size` - The page size to request by default for all resources.
-*`status` - Filter results by petition status
-*`isPublic` - When set to 1, this will only return petitions accepting signatures. When set to 0, returns only un-signable petitions.
-*`isSignable` - When set to 1, this will only return petitions accepting signatures. When set to 0, returns only un-signable petitions.
-*`createdBefore` - Filters results to display items created before specified date or time.
-*`createdAfter` - Filters results to display items created before specified date or time.
-*`limit` - The maximum number of results that may be returned. Maximum limit is 1000.
-*`title` - Filters results by keyword or phrase in the Title.
-*`body` - Filters results by keyword or phrase in the Body.
-*`city` - Filters results by associated city.
-*`state` - Filters results by associated state.
+* `status` - Filter results by petition status
+* `isPublic` - When set to 1, this will only return petitions accepting signatures. When set to 0, returns only un-signable petitions.
+* `isSignable` - When set to 1, this will only return petitions accepting signatures. When set to 0, returns only un-signable petitions.
+* `createdBefore` - Filters results to display items created before specified date or time.
+* `createdAfter` - Filters results to display items created before specified date or time.
+* `limit` - The maximum number of results that may be returned. Maximum limit is 1000.
+* `title` - Filters results by keyword or phrase in the Title.
+* `body` - Filters results by keyword or phrase in the Body.
+* `city` - Filters results by associated city.
+* `state` - Filters results by associated state.
 * `client` - If you don't want to use `rest-client` you can substitute in another HTTP client object that conforms to the same API here.
 * `mock` - If set to "1", all requests will return mock results.
 
